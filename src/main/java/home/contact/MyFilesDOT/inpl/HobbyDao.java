@@ -1,30 +1,32 @@
-package home.contact.MyFilesDOT;
+package home.contact.MyFilesDOT.inpl;
 
 import home.contact.CoreMyCpring.Contact;
 import home.contact.CoreMyCpring.Hobby;
+import home.contact.MyFilesDOT.InterfaceHobbyDao;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
  * Created by Aleksandr on 07.03.2015.
  */
-public class HobbyDao {
-        private List<Hobby> listHobby = new ArrayList<Hobby>();
+public class HobbyDao implements InterfaceHobbyDao {
 
-    public void addHobby(Hobby title){
+    private Set<Hobby> listHobby = new HashSet<Hobby>();
+
+    @Override
+    public void addHobby(Hobby title) {
         listHobby.add(title);
     }
 
-    public Set<Contact> getAiiContactsWithHobby(Hobby title){
-
+    @Override
+    public Set<Contact> getAiiContactsWithHobby(Hobby title) {
         return null;
     }
-
-    public void setListHobby(List<Hobby> listHobby) {
+    public void setListHobby(Set<Hobby> listHobby) {
         this.listHobby = listHobby;
     }
+
 
     @Override
     public String

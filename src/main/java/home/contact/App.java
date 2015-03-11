@@ -1,11 +1,8 @@
 package home.contact;
 
-import home.contact.ContactService.JavaContactService;
+import home.contact.ContactService.impl.JavaContactService;
 import home.contact.CoreMyCpring.Contact;
-import home.contact.MyFilesDOT.ContactDao;
-import home.contact.MyFilesDOT.HobbyDao;
-import home.contact.MyFilesDOT.MessageDao;
-import home.contact.MyFilesDOT.PlaceDao;
+import home.contact.MyFilesDOT.inpl.ContactDao;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
@@ -18,13 +15,13 @@ public class App {
         JavaContactService javaContactService = (JavaContactService) context.getBean("JavaContact");
 
         ContactDao contactDao = (ContactDao) context.getBean("ContactDao");
-        HobbyDao hobbyDao = (HobbyDao) context.getBean("HobbyDao");
-        PlaceDao placeDao = (PlaceDao) context.getBean("PlaceDao");
-        MessageDao messageDao = (MessageDao) context.getBean("MessegeDao");
+//        HobbyDao hobbyDao = (HobbyDao) context.getBean("HobbyDao");
+//        PlaceDao placeDao = (PlaceDao) context.getBean("PlaceDao");
+//        MessageDao messageDao = (MessageDao) context.getBean("MessegeDao");
         System.out.println(contactDao.toString());
         System.out.println("Contacts : "+contactDao.countContact());
         System.out.println("___________________________________________________");
-        contactDao.deleteContact((Contact)context.getBean("Contact3"));
+        contactDao.deleteContact((Contact) context.getBean("Contact3"));
         System.out.println(contactDao.toString());
         System.out.println("Contacts : "+contactDao.countContact());
         System.out.println("___________________________________________________");

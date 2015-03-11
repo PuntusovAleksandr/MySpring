@@ -5,14 +5,14 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans 
                            http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
-    <bean id="JavaContact" class="home.contact.ContactService.JavaContactService">
+    <bean id="JavaContact" class="home.contact.ContactService.impl.JavaContactService">
         <property name="contactDao" ref="ContactDao"/>
         <property name="hobbyDao" ref="HobbyDao"/>
         <property name="messegeDao" ref="MessegeDao"/>
         <property name="placeDao" ref="PlaceDao"/>
     </bean>
 
-    <bean id="ContactDao" class="home.contact.MyFilesDOT.ContactDao">
+    <bean id="ContactDao" class="home.contact.MyFilesDOT.inpl.ContactDao">
         <property name="contactlist">
             <list value-type="java.util.List">
                 <ref bean="Contact1"/>
@@ -23,7 +23,7 @@
             </list>
         </property>
     </bean>
-    <bean id="HobbyDao" class="home.contact.MyFilesDOT.HobbyDao">
+    <bean id="HobbyDao" class="home.contact.MyFilesDOT.inpl.HobbyDao">
         <property name="listHobby">
             <list value-type="java.util.ArrayList">
                 <ref bean="HobbyRally"/>
@@ -33,8 +33,8 @@
             </list>
         </property>
     </bean>
-    <bean id="MessegeDao" class="home.contact.MyFilesDOT.MessageDao"/>
-    <bean id="PlaceDao" class="home.contact.MyFilesDOT.PlaceDao"/>
+    <bean id="MessegeDao" class="home.contact.MyFilesDOT.inpl.MessageDao"/>
+    <bean id="PlaceDao" class="home.contact.MyFilesDOT.inpl.PlaceDao"/>
 
     <bean id="Contact1" name="Contact1" class="home.contact.CoreMyCpring.Contact">
         <property name="firstName" value="Aleks"/>
@@ -54,6 +54,7 @@
                 <ref bean="PlaceOdessa"/>
             </set>
         </property>
+        <property name="birthDate" ref="localDate1"/>
     </bean>
     <bean id="Contact2" name="Contact2" class="home.contact.CoreMyCpring.Contact">
         <property name="firstName" value="Maks"/>
@@ -89,6 +90,7 @@
                 <ref bean="PlaceOdessa"/>
             </set>
         </property>
+        <property name="birthDate" ref="localDate2"/>
     </bean>
     <bean id="Contact4" name="Contact4" class="home.contact.CoreMyCpring.Contact">
         <property name="firstName" value="Vasilij"/>
@@ -123,7 +125,7 @@
                 <ref bean="PlaceOdessa"/>
             </set>
         </property>
-
+        <property name="birthDate" ref="localDate3"/>
     </bean>
 
     <bean id="HobbyRally" name="Rally" class="home.contact.CoreMyCpring.Hobby">
@@ -146,6 +148,22 @@
     <!--<bean id="Message" class="home.contact.CoreMyCpring.MessageContact">-->
         <!--<property name="content" value="Привет это первое сообщение"/>-->
     <!--</bean>-->
+
+    <bean id="localDate1" class="java.time.LocalDate" factory-method="of">
+    <constructor-arg index="0" value="1995" />
+    <constructor-arg index="1" value="3" />
+    <constructor-arg index="2" value="11" />
+    </bean>
+    <bean id="localDate2" class="java.time.LocalDate" factory-method="of">
+        <constructor-arg index="0" value="2000" />
+        <constructor-arg index="1" value="7" />
+        <constructor-arg index="2" value="17" />
+    </bean>
+    <bean id="localDate3" class="java.time.LocalDate" factory-method="of">
+        <constructor-arg index="0" value="1990" />
+        <constructor-arg index="1" value="12" />
+        <constructor-arg index="2" value="11" />
+    </bean>
 
     <bean id="PlaceDnepr" name="placeDnepr" class="home.contact.CoreMyCpring.Place">
         <property name="title" value="Dnepr"/>

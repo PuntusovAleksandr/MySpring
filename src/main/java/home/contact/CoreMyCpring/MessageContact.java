@@ -12,12 +12,9 @@ public class MessageContact {
     private Contact to;
     private String content;
 
-    public LocalDateTime getDate() {
-        return date;
-    }
-
-    public void setDate(LocalDateTime date) {
-        this.date = date;
+    public MessageContact(LocalDateTime date, String content) {
+        this.date = LocalDateTime.now();
+        this.content = content;
     }
 
     public Contact getFrom() {
@@ -36,16 +33,7 @@ public class MessageContact {
         this.to = to;
     }
 
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-
-    @Override
+   @Override
     public String toString() {
         return "Message{" +
                 "date=" + date +

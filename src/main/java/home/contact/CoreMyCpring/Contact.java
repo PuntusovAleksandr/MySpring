@@ -13,7 +13,6 @@ public class Contact {
     private Set<Hobby> hobbies;
     private Set<Place> places;
 
-
     public String getFirstName() {
         return firstName;
     }

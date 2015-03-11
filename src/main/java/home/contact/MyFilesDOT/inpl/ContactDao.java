@@ -1,6 +1,7 @@
-package home.contact.MyFilesDOT;
+package home.contact.MyFilesDOT.inpl;
 
 import home.contact.CoreMyCpring.Contact;
+import home.contact.MyFilesDOT.InterfaceContactDao;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,27 +9,33 @@ import java.util.List;
 /**
  * Created by Aleksandr on 07.03.2015.
  */
-public class ContactDao {
+public class ContactDao implements InterfaceContactDao {
     private List<Contact> contactlist = new ArrayList<Contact>();
 
-    public void addContact(Contact contact){
+
+    @Override
+    public void addContact(Contact contact) {
         contactlist.add(contact);
     }
 
-    public void deleteContact(Contact contact){
+    @Override
+    public void deleteContact(Contact contact) {
         for (int i = 0; i < contactlist.size(); i++) {
             if (contactlist.get(i).equals(contact)) contactlist.remove(i);
         }
     }
 
-    public void addFriendShip(Contact name, Contact nameFriend){
+    @Override
+    public void addFriendShip(Contact name, Contact nameFriend) {
+        for (int i = 0; i <contactlist.size() ; i++) {
 
+        }
     }
 
-    public void removeFriendship(Contact name, Contact nameFriend){
+    @Override
+    public void removeFriendship(Contact name, Contact nameFriend) {
 
     }
-
     public int countContact(){
         return contactlist.size();
     }
