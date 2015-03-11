@@ -1,7 +1,7 @@
-package MyFilesDOT;
+package home.contact.MyFilesDOT;
 
-import CoreMyCpring.Contact;
-import CoreMyCpring.Hobby;
+import home.contact.CoreMyCpring.Contact;
+import home.contact.CoreMyCpring.Hobby;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,9 +1,11 @@
-import ContactService.JavaContactService;
-import CoreMyCpring.Contact;
-import MyFilesDOT.ContactDao;
-import MyFilesDOT.HobbyDao;
-import MyFilesDOT.MessageDao;
-import MyFilesDOT.PlaceDao;
+package home.contact;
+
+import home.contact.ContactService.JavaContactService;
+import home.contact.CoreMyCpring.Contact;
+import home.contact.MyFilesDOT.ContactDao;
+import home.contact.MyFilesDOT.HobbyDao;
+import home.contact.MyFilesDOT.MessageDao;
+import home.contact.MyFilesDOT.PlaceDao;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
@@ -20,9 +22,11 @@ public class App {
         PlaceDao placeDao = (PlaceDao) context.getBean("PlaceDao");
         MessageDao messageDao = (MessageDao) context.getBean("MessegeDao");
         System.out.println(contactDao.toString());
-        contactDao.deleteContact((Contact)context.getBean("Contact3"));
+        System.out.println("Contacts : "+contactDao.countContact());
         System.out.println("___________________________________________________");
+        contactDao.deleteContact((Contact)context.getBean("Contact3"));
         System.out.println(contactDao.toString());
+        System.out.println("Contacts : "+contactDao.countContact());
         System.out.println("___________________________________________________");
 
     }

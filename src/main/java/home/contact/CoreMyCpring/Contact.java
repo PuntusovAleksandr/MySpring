@@ -1,4 +1,4 @@
-package CoreMyCpring;
+package home.contact.CoreMyCpring;
 
 import java.time.LocalDate;
 import java.util.Set;

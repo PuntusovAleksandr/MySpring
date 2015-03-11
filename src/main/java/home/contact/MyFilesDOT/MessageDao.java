@@ -1,8 +1,8 @@
-package MyFilesDOT;
+package home.contact.MyFilesDOT;
 
 
-import CoreMyCpring.Contact;
-import CoreMyCpring.MessageContact;
+import home.contact.CoreMyCpring.Contact;
+import home.contact.CoreMyCpring.MessageContact;
 
 
 import java.util.List;

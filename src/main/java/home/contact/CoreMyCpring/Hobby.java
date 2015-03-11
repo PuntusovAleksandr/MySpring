@@ -1,4 +1,4 @@
-package CoreMyCpring;
+package home.contact.CoreMyCpring;
 
 /**
  * Created by Aleksandr on 07.03.2015.

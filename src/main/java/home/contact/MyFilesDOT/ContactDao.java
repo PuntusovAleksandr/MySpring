@@ -1,6 +1,6 @@
-package MyFilesDOT;
+package home.contact.MyFilesDOT;
 
-import CoreMyCpring.Contact;
+import home.contact.CoreMyCpring.Contact;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +27,10 @@ public class ContactDao {
 
     public void removeFriendship(Contact name, Contact nameFriend){
 
+    }
+
+    public int countContact(){
+        return contactlist.size();
     }
 
     public void setContactlist(List<Contact> contactlist) {

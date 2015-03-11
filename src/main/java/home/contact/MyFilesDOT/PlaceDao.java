@@ -1,7 +1,7 @@
-package MyFilesDOT;
+package home.contact.MyFilesDOT;
 
-import CoreMyCpring.Contact;
-import CoreMyCpring.Place;
+import home.contact.CoreMyCpring.Contact;
+import home.contact.CoreMyCpring.Place;
 
 import java.util.Set;
 

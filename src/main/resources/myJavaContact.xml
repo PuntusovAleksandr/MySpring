@@ -5,14 +5,14 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans 
                            http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
-    <bean id="JavaContact" class="ContactService.JavaContactService">
+    <bean id="JavaContact" class="home.contact.ContactService.JavaContactService">
         <property name="contactDao" ref="ContactDao"/>
         <property name="hobbyDao" ref="HobbyDao"/>
         <property name="messegeDao" ref="MessegeDao"/>
         <property name="placeDao" ref="PlaceDao"/>
     </bean>
 
-    <bean id="ContactDao" class="MyFilesDOT.ContactDao">
+    <bean id="ContactDao" class="home.contact.MyFilesDOT.ContactDao">
         <property name="contactlist">
             <list value-type="java.util.List">
                 <ref bean="Contact1"/>
@@ -23,7 +23,7 @@
             </list>
         </property>
     </bean>
-    <bean id="HobbyDao" class="MyFilesDOT.HobbyDao">
+    <bean id="HobbyDao" class="home.contact.MyFilesDOT.HobbyDao">
         <property name="listHobby">
             <list value-type="java.util.ArrayList">
                 <ref bean="HobbyRally"/>
@@ -33,10 +33,10 @@
             </list>
         </property>
     </bean>
-    <bean id="MessegeDao" class="MyFilesDOT.MessageDao"/>
-    <bean id="PlaceDao" class="MyFilesDOT.PlaceDao"/>
+    <bean id="MessegeDao" class="home.contact.MyFilesDOT.MessageDao"/>
+    <bean id="PlaceDao" class="home.contact.MyFilesDOT.PlaceDao"/>
 
-    <bean id="Contact1" name="Contact1" class="CoreMyCpring.Contact">
+    <bean id="Contact1" name="Contact1" class="home.contact.CoreMyCpring.Contact">
         <property name="firstName" value="Aleks"/>
         <property name="lastName" value="Ivanovich"/>
         <property name="hobbies">
@@ -55,7 +55,7 @@
             </set>
         </property>
     </bean>
-    <bean id="Contact2" name="Contact2" class="CoreMyCpring.Contact">
+    <bean id="Contact2" name="Contact2" class="home.contact.CoreMyCpring.Contact">
         <property name="firstName" value="Maks"/>
         <property name="lastName" value="Petrov"/>
         <property name="hobbies">
@@ -72,7 +72,7 @@
             </set>
         </property>
     </bean>
-    <bean id="Contact3" name="Contact3" class="CoreMyCpring.Contact">
+    <bean id="Contact3" name="Contact3" class="home.contact.CoreMyCpring.Contact">
         <property name="firstName" value="Ivan"/>
         <property name="lastName" value="Igorivich"/>
         <property name="hobbies">
@@ -90,7 +90,7 @@
             </set>
         </property>
     </bean>
-    <bean id="Contact4" name="Contact4" class="CoreMyCpring.Contact">
+    <bean id="Contact4" name="Contact4" class="home.contact.CoreMyCpring.Contact">
         <property name="firstName" value="Vasilij"/>
         <property name="lastName" value="Ivanovich"/>
         <property name="hobbies">
@@ -107,7 +107,7 @@
             </set>
         </property>
     </bean>
-    <bean id="Contact5" name="Contact5" class="CoreMyCpring.Contact">
+    <bean id="Contact5" name="Contact5" class="home.contact.CoreMyCpring.Contact">
         <property name="firstName" value="Oleg"/>
         <property name="lastName" value="Maksimiovich"/>
         <property name="hobbies">
@@ -126,40 +126,40 @@
 
     </bean>
 
-    <bean id="HobbyRally" name="Rally" class="CoreMyCpring.Hobby">
+    <bean id="HobbyRally" name="Rally" class="home.contact.CoreMyCpring.Hobby">
         <property name="title" value="RallyOnTheCar"/>
         <property name="description" value="Like see on the car rally"/>
     </bean>
-    <bean id="HobbyFishing" name="Fishing" class="CoreMyCpring.Hobby">
+    <bean id="HobbyFishing" name="Fishing" class="home.contact.CoreMyCpring.Hobby">
         <property name="title" value="FishingBigFish"/>
         <property name="description" value="Like fishing big fish"/>
     </bean>
-    <bean id="HobbyFootBall" name="FootBall" class="CoreMyCpring.Hobby">
+    <bean id="HobbyFootBall" name="FootBall" class="home.contact.CoreMyCpring.Hobby">
         <property name="title" value="FootBall"/>
         <property name="description" value="Like see and play football"/>
     </bean>
-    <bean id="HobbyBoks" name="Boks" class="CoreMyCpring.Hobby">
+    <bean id="HobbyBoks" name="Boks" class="home.contact.CoreMyCpring.Hobby">
         <property name="title" value="Boks"/>
         <property name="description" value="Like see and play boks"/>
     </bean>
 
-    <!--<bean id="Message" class="CoreMyCpring.MessageContact">-->
+    <!--<bean id="Message" class="home.contact.CoreMyCpring.MessageContact">-->
         <!--<property name="content" value="Привет это первое сообщение"/>-->
     <!--</bean>-->
 
-    <bean id="PlaceDnepr" name="placeDnepr" class="CoreMyCpring.Place">
+    <bean id="PlaceDnepr" name="placeDnepr" class="home.contact.CoreMyCpring.Place">
         <property name="title" value="Dnepr"/>
         <property name="description" value="My love city"/>
         <property name="latitude" value="49.0556126545216"/>
         <property name="longitude" value="84.5489415681"/>
     </bean>
-    <bean id="PlaceKiev" name="placeKiev" class="CoreMyCpring.Place">
+    <bean id="PlaceKiev" name="placeKiev" class="home.contact.CoreMyCpring.Place">
         <property name="title" value="Kiev"/>
         <property name="description" value="My love big city"/>
         <property name="latitude" value="10.61651616"/>
         <property name="longitude" value="99.115651651"/>
     </bean>
-    <bean id="PlaceOdessa" name="placeOdessa" class="CoreMyCpring.Place">
+    <bean id="PlaceOdessa" name="placeOdessa" class="home.contact.CoreMyCpring.Place">
         <property name="title" value="Odessa"/>
         <property name="description" value="My love sea city"/>
         <property name="latitude" value="0.5684984"/>
