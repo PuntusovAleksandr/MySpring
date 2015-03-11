@@ -8,6 +8,8 @@ import home.contact.MyFilesDOT.inpl.MessageDao;
 import home.contact.MyFilesDOT.inpl.PlaceDao;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.time.LocalDate;
+
 /**
  * Created by Aleksandr on 08.03.2015.
  */
@@ -29,5 +31,22 @@ public class App {
         System.out.println("Contacts : "+contactDao.countContact());
         System.out.println("___________________________________________________");
 
+        Contact contact = (Contact) context.getBean("Contact1");
+        Contact contact1 =(Contact) context.getBean("Contact5");
+
+////        contactDao.addFriendShip(((Contact) context.getBean("Contact1")),((Contact) context.getBean("Contact5")));
+//        contactDao.addFriendShip(contact, contact1);
+        javaContactService.createContact("Monja", "Figoc", LocalDate.ofEpochDay(2005-07-06));
+
+
+        System.out.println(contactDao.getContactFriendShipList());
+        System.out.println("Contacts : "+contactDao.countContact());
+        javaContactService.addHobby("I like see", "Swing");
+        System.out.println(javaContactService.getHobbyDao());
+
+        javaContactService.addPlace("Little city","Nikoppol",65.568156, 45.4984 );
+
+
+        System.out.println();
     }
 }

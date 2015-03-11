@@ -29,8 +29,10 @@ public class ContactDao implements InterfaceContactDao {
     public void addFriendShip(Contact contactOne, Contact contactTwo) {
         if (contactFriendShipList == null) contactFriendShipList = new ArrayList<List<Contact>>();
         for (int i = 0; i < contactlist.size(); i++) {
-            if (contactlist.get(i).equals(contactOne)) {
+
+            if (contactFriendShipList.get(i).equals(contactOne)) {
                 contactFriendShipList.get(i).add(contactTwo);
+
             }
         }
     }
