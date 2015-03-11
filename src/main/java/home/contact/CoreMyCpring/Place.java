@@ -9,6 +9,14 @@ public class Place {
     private double latitude;
     private String description;
 
+    public Place(){}
+
+    public Place(String title,String description, double longitude, double latitude) {
+        this.title = title;
+        this.longitude = longitude;
+        this.latitude = latitude;
+        this.description = description;
+    }
 
     public String getTitle() {
         return title;
@@ -44,11 +52,10 @@ public class Place {
 
     @Override
     public String toString() {
-        return "Place{" +
+        return "Place : " +
                 "title='" + title + '\'' +
-                ", longitude=" + longitude +
-                ", latitude=" + latitude +
-                ", description='" + description + '\'' +
-                '}'+"\n";
+                ", longitude= " + longitude +
+                ", latitude= " + latitude +
+                ", description= '" + description;
     }
 }

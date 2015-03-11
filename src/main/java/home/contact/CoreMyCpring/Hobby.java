@@ -7,6 +7,13 @@ public class Hobby {
     private String title;
     private String description;
 
+    public Hobby(){}
+
+    public Hobby(String title, String description) {
+        this.title = title;
+        this.description = description;
+    }
+
     public String getDescription() {
         return description;
     }
@@ -25,9 +32,9 @@ public class Hobby {
 
     @Override
     public String toString() {
-        return "Hobby{" +
-                "title='" + title + '\'' +
-                ", description='" + description + '\'' +
-                '}'+"\n";
+        return "Hobby : " +
+                "title= '" + title + '\'' +
+                ", description= '" + description;
     }
+
 }

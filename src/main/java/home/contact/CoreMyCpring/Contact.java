@@ -13,6 +13,14 @@ public class Contact {
     private Set<Hobby> hobbies;
     private Set<Place> places;
 
+    public Contact(){}
+
+    public Contact(String firstName, String lastName, LocalDate birthDate) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.birthDate = birthDate;
+    }
+
     public String getFirstName() {
         return firstName;
     }

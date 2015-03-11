@@ -3,15 +3,14 @@ package home.contact.MyFilesDOT.inpl;
 import home.contact.CoreMyCpring.Contact;
 import home.contact.MyFilesDOT.InterfaceContactDao;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by Aleksandr on 07.03.2015.
  */
 public class ContactDao implements InterfaceContactDao {
     private List<Contact> contactlist = new ArrayList<Contact>();
-
+    private List<List <Contact>> contactFriendShipList ;
 
     @Override
     public void addContact(Contact contact) {
@@ -26,16 +25,31 @@ public class ContactDao implements InterfaceContactDao {
     }
 
     @Override
-    public void addFriendShip(Contact name, Contact nameFriend) {
-        for (int i = 0; i <contactlist.size() ; i++) {
-
+    //сомнения по поводу этого метода
+    public void addFriendShip(Contact contactOne, Contact contactTwo) {
+        if (contactFriendShipList == null) contactFriendShipList = new ArrayList<List<Contact>>();
+        for (int i = 0; i < contactlist.size(); i++) {
+            if (contactlist.get(i).equals(contactOne)) {
+                contactFriendShipList.get(i).add(contactTwo);
+            }
         }
     }
 
     @Override
-    public void removeFriendship(Contact name, Contact nameFriend) {
-
+    //сомнения по поводу этого метода
+    public void removeFriendship(Contact contactOne, Contact contactTwo) {
+        if (contactFriendShipList == null) contactFriendShipList = new ArrayList<List<Contact>>();
+        for (int i = 0; i < contactlist.size(); i++) {
+            if (contactlist.get(i).equals(contactOne)) {
+                for (int j = 0; j < contactFriendShipList.get(i).size(); j++) {
+                    if (contactFriendShipList.get(i).get(j).getFirstName().equals(contactTwo)){
+                        contactFriendShipList.get(i).remove(j);
+                    }
+                }
+            }
+        }
     }
+
     public int countContact(){
         return contactlist.size();
     }
@@ -44,8 +58,18 @@ public class ContactDao implements InterfaceContactDao {
         this.contactlist = contactlist;
     }
 
+    public List<Contact> getContactlist() {
+        return contactlist;
+    }
+
+    public List<List<Contact>> getContactFriendShipList() {
+        return contactFriendShipList;
+    }
+
     @Override
     public String toString() {
-        return "ContactDaoList=\n" + contactlist;
+        return "ContactDao : " +
+                "contactlist= " + contactlist +
+                ", contactFriendShipList= " + contactFriendShipList;
     }
 }

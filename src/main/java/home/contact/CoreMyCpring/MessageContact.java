@@ -13,7 +13,7 @@ public class MessageContact {
     private String content;
 
     public MessageContact(LocalDateTime date, String content) {
-        this.date = LocalDateTime.now();
+        this.date = date.now();
         this.content = content;
     }
 
@@ -35,11 +35,11 @@ public class MessageContact {
 
    @Override
     public String toString() {
-        return "Message{" +
-                "date=" + date +
-                ", from=" + from +
-                ", to=" + to +
-                ", content='" + content + '\'' +
+        return "Message: " +
+                "date= " + date +
+                ", from= " + from +
+                ", to= " + to +
+                ", content '" + content + '\'' +
                 '}'+"\n";
     }
 }

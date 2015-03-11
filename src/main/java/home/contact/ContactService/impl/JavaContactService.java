@@ -2,13 +2,16 @@ package home.contact.ContactService.impl;
 
 import home.contact.ContactService.InterfaceJavaContactService;
 import home.contact.CoreMyCpring.Contact;
+import home.contact.CoreMyCpring.Hobby;
 import home.contact.CoreMyCpring.MessageContact;
+import home.contact.CoreMyCpring.Place;
 import home.contact.MyFilesDOT.inpl.ContactDao;
 import home.contact.MyFilesDOT.inpl.HobbyDao;
 import home.contact.MyFilesDOT.inpl.MessageDao;
 import home.contact.MyFilesDOT.inpl.PlaceDao;
 
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -19,136 +22,73 @@ public class JavaContactService implements InterfaceJavaContactService {
     private ContactDao contactDao;
     private HobbyDao hobbyDao;
     private PlaceDao placeDao;
-    private MessageDao messegeDao;
+    private MessageDao messageDao;
 
     @Override
     public void createContact(String name, String lastName, LocalDate birthDay) {
-
+        contactDao.addContact(new Contact(name, lastName, birthDay));
     }
 
     @Override
     public void addHobby(String description, String title) {
-
+        hobbyDao.addHobby(new Hobby(title, description));
     }
 
     @Override
     public void addPlace(String description, String title, double longitude, double latitude) {
-
+        placeDao.addPlace(new Place(title, description,longitude, latitude ));
     }
 
     @Override
-    public void addFriendShip(Contact name, Contact lastName) {
-
+    public void addFriendShip(Contact contactOne, Contact contactTwo) {
+        contactDao.addFriendShip(contactOne, contactTwo);
     }
 
     @Override
     public Set<Contact> getFriendList(Contact contact) {
-        return null;
+        Set<Contact> contactSet = new HashSet<Contact>();
+        for (int i = 0; i < contactDao.getContactFriendShipList().size(); i++) {
+            if (contactDao.getContactFriendShipList().get(i).equals(contact)){
+                contactSet = (Set<Contact>) contactDao.getContactFriendShipList().get(i);
+            }
+        }
+        return contactSet;
     }
 
     @Override
-    public List<MessageContact> getConversation(Contact contact, Contact name) {
-        return null;
+    public List<MessageContact> getConversation(Contact contactOne, Contact contactTwo) {
+        return messageDao.getConversation(contactOne, contactTwo);
     }
 
+    public ContactDao getContactDao() {
+        return contactDao;
+    }
 
-//
-//    public void createContact (String name, String lastName, LocalDate birthDay){
-//
-//    }
-//
-//    public void addHobby(String description, String title){
-//        hobbyDao = new HobbyDao();
-//        Hobby hobby = new Hobby();
-//        hobby.setDescription(description);
-//        hobby.setTitle(title);
-//        hobbyDao.addHobby(hobby);
-//
-//    }
-//
-//    @Override
-//    public String toString() {
-//        return "JavaContactService{" +
-//                "contactDao=" + contactDao +
-//                ", hobbyDao=" + hobbyDao +
-//                ", placeDao=" + placeDao +
-//                ", messegeDao=" + messegeDao +
-//                '}';
-//    }
-//
-//    public void addPlace(String description, String title, double longitude, double latitude){
-//
-//    }
-//
-//    public void addFriendShip (Contact name, Contact lastName){
-//
-//    }
-//
-//    public Set<Contact> getFriendList(Contact contact){
-//        return null;
-//    }
-//
-//
-//    public List<MessageContact> getConversation(Contact contact, Contact name ){
-//        return null;
-//    }
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//    public ContactDao getContactDao() {
-//        return contactDao;
-//    }
-//
-//    public void setContactDao(ContactDao contactDao) {
-//        this.contactDao = contactDao;
-//    }
-//
-//    public HobbyDao getHobbyDao() {
-//        return hobbyDao;
-//    }
-//
-//    public void setHobbyDao(HobbyDao hobbyDao) {
-//        this.hobbyDao = hobbyDao;
-//    }
-//
-//    public PlaceDao getPlaceDao() {
-//        return placeDao;
-//    }
-//
-//    public void setPlaceDao(PlaceDao placeDao) {
-//        this.placeDao = placeDao;
-//    }
-//
-//    public MessageDao getMessegeDao() {
-//        return messegeDao;
-//    }
-//
-//    public void setMessegeDao(MessageDao messegeDao) {
-//        this.messegeDao = messegeDao;
-//    }
+    public void setContactDao(ContactDao contactDao) {
+        this.contactDao = contactDao;
+    }
 
+    public HobbyDao getHobbyDao() {
+        return hobbyDao;
+    }
 
+    public void setHobbyDao(HobbyDao hobbyDao) {
+        this.hobbyDao = hobbyDao;
+    }
+
+    public PlaceDao getPlaceDao() {
+        return placeDao;
+    }
+
+    public void setPlaceDao(PlaceDao placeDao) {
+        this.placeDao = placeDao;
+    }
+
+    public MessageDao getMessegeDao() {
+        return messageDao;
+    }
+
+    public void setMessegeDao(MessageDao messegeDao) {
+        this.messageDao = messegeDao;
+    }
 }
