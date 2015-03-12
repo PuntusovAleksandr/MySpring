@@ -1,8 +1,8 @@
-package home.contact.MyFilesDOT.inpl;
+package home.contact.dao.inpl;
 
-import home.contact.CoreMyCpring.Contact;
-import home.contact.CoreMyCpring.Hobby;
-import home.contact.MyFilesDOT.InterfaceHobbyDao;
+import home.contact.model.Contact;
+import home.contact.model.Hobby;
+import home.contact.dao.InterfaceHobbyDao;
 
 import java.util.HashSet;
 import java.util.List;

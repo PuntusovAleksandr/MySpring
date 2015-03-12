@@ -1,8 +1,8 @@
-package home.contact.MyFilesDOT.inpl;
+package home.contact.dao.inpl;
 
-import home.contact.CoreMyCpring.Contact;
-import home.contact.CoreMyCpring.Place;
-import home.contact.MyFilesDOT.InterfacePlaceDao;
+import home.contact.model.Contact;
+import home.contact.model.Place;
+import home.contact.dao.InterfacePlaceDao;
 
 import java.util.ArrayList;
 import java.util.List;

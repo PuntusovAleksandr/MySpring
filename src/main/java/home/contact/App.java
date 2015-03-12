@@ -1,11 +1,11 @@
 package home.contact;
 
-import home.contact.ContactService.impl.JavaContactService;
-import home.contact.CoreMyCpring.Contact;
-import home.contact.MyFilesDOT.inpl.ContactDao;
-import home.contact.MyFilesDOT.inpl.HobbyDao;
-import home.contact.MyFilesDOT.inpl.MessageDao;
-import home.contact.MyFilesDOT.inpl.PlaceDao;
+import home.contact.service.impl.JavaContactService;
+import home.contact.model.Contact;
+import home.contact.dao.inpl.ContactDao;
+import home.contact.dao.inpl.HobbyDao;
+import home.contact.dao.inpl.MessageDao;
+import home.contact.dao.inpl.PlaceDao;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.time.LocalDate;

@@ -1,4 +1,4 @@
-package home.contact.CoreMyCpring;
+package home.contact.model;
 
 /**
  * Created by Aleksandr on 07.03.2015.

@@ -1,9 +1,9 @@
-package home.contact.MyFilesDOT.inpl;
+package home.contact.dao.inpl;
 
 
-import home.contact.CoreMyCpring.Contact;
-import home.contact.CoreMyCpring.MessageContact;
-import home.contact.MyFilesDOT.InterfaceMessageDao;
+import home.contact.model.Contact;
+import home.contact.model.MessageContact;
+import home.contact.dao.InterfaceMessageDao;
 
 import java.util.LinkedList;
 import java.util.List;

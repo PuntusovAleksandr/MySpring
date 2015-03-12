@@ -1,14 +1,14 @@
-package home.contact.ContactService.impl;
+package home.contact.service.impl;
 
-import home.contact.ContactService.InterfaceJavaContactService;
-import home.contact.CoreMyCpring.Contact;
-import home.contact.CoreMyCpring.Hobby;
-import home.contact.CoreMyCpring.MessageContact;
-import home.contact.CoreMyCpring.Place;
-import home.contact.MyFilesDOT.inpl.ContactDao;
-import home.contact.MyFilesDOT.inpl.HobbyDao;
-import home.contact.MyFilesDOT.inpl.MessageDao;
-import home.contact.MyFilesDOT.inpl.PlaceDao;
+import home.contact.service.InterfaceJavaContactService;
+import home.contact.model.Contact;
+import home.contact.model.Hobby;
+import home.contact.model.MessageContact;
+import home.contact.model.Place;
+import home.contact.dao.inpl.ContactDao;
+import home.contact.dao.inpl.HobbyDao;
+import home.contact.dao.inpl.MessageDao;
+import home.contact.dao.inpl.PlaceDao;
 
 import java.time.LocalDate;
 import java.util.HashSet;

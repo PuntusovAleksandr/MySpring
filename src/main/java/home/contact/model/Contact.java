@@ -1,4 +1,4 @@
-package home.contact.CoreMyCpring;
+package home.contact.model;
 
 import java.time.LocalDate;
 import java.util.Set;

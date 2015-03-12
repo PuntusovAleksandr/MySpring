@@ -1,7 +1,7 @@
-package home.contact.MyFilesDOT.inpl;
+package home.contact.dao.inpl;
 
-import home.contact.CoreMyCpring.Contact;
-import home.contact.MyFilesDOT.InterfaceContactDao;
+import home.contact.model.Contact;
+import home.contact.dao.InterfaceContactDao;
 
 import java.util.*;
 
