@@ -13,6 +13,11 @@ public class Contact {
     private Set<Hobby> hobbies;
     private Set<Place> places;
 
+
+    public LocalDate getBirthDate() {
+        return birthDate;
+    }
+
     public Contact(){}
 
     public Contact(String firstName, String lastName, LocalDate birthDate) {
@@ -63,12 +68,12 @@ public class Contact {
 
     @Override
     public String toString() {
-        return "Contact\n" +
+        return "Contact{" +
                 "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", birthDate=" + birthDate +
                 ", hobbies=" + hobbies +
-                ", places=" + places + "\n";
+                ", places=" + places +
+                '}';
     }
-
 }

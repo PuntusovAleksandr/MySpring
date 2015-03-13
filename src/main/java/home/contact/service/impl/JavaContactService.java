@@ -13,6 +13,7 @@ import home.contact.dao.inpl.PlaceDao;
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -47,9 +48,15 @@ public class JavaContactService implements InterfaceJavaContactService {
     @Override
     public Set<Contact> getFriendList(Contact contact) {
         Set<Contact> contactSet = new HashSet<Contact>();
-        for (int i = 0; i < contactDao.getContactFriendShipList().size(); i++) {
-            if (contactDao.getContactFriendShipList().get(i).equals(contact)){
-                contactSet = (Set<Contact>) contactDao.getContactFriendShipList().get(i);
+        String idContact = contact.getFirstName()+contact.getLastName();
+
+        if (contactDao.getListFriend()==null) {
+            System.out.println("List friend not found");
+        }else {
+            for (Map.Entry entry : contactDao.getListFriend().entrySet()){
+                if (entry.getKey().equals(idContact)) {
+                    contactSet = (Set<Contact>) entry.getValue();
+                }
             }
         }
         return contactSet;
