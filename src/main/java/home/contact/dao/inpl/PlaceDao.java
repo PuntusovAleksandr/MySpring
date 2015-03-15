@@ -3,8 +3,10 @@ package home.contact.dao.inpl;
 import home.contact.model.Contact;
 import home.contact.model.Place;
 import home.contact.dao.InterfacePlaceDao;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -13,8 +15,8 @@ import java.util.Set;
  */
 public class PlaceDao implements InterfacePlaceDao{
     private List<Place> placeList;
-    private Set<Contact> contactsPlaceList;
-    private List<Contact> contactDaoList;
+
+
 
     @Override
     public void addPlace(Place title) {
@@ -24,11 +26,17 @@ public class PlaceDao implements InterfacePlaceDao{
 
     @Override
     public Set<Contact> getAllContactsPlace(Place title) {
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("myJavaContact.xml");
+        ContactDao contactDao = (ContactDao) context.getBean("ContactDao");
+        List<Contact> contacList= contactDao.getContactlist();
+        Set<Contact> contactsPlaceList = new HashSet<>();
         if (placeList==null)return null;
-        contactDaoList = new ContactDao().getContactlist();
-        for (int i = 0; i < contactDaoList.size() ; i++) {
-            if (contactDaoList.get(i).getPlaces().equals(title)){
-                contactsPlaceList.add(contactDaoList.get(i));
+
+        for (int i = 0; i < contacList.size() ; i++) {
+            for (int j = 0; j <contacList.get(i).getPlaces().size() ; j++) {
+                if (contacList.get(i).getPlaces().contains(title)){
+                    contactsPlaceList.add(contacList.get(i));
+                }
             }
         }
         return contactsPlaceList;
@@ -36,10 +44,7 @@ public class PlaceDao implements InterfacePlaceDao{
 
     @Override
     public String toString() {
-        return "PlaceDao : " +
-                "placeList= " + placeList +
-                ", contactsPlaceList= " + contactsPlaceList +
-                ", contactDaoList= " + contactDaoList;
+        return "PlaceDaoList= " + placeList;
     }
 }
 

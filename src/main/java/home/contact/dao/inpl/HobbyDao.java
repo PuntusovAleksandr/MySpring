@@ -16,7 +16,7 @@ public class HobbyDao implements InterfaceHobbyDao {
 
     private Set<Hobby> listHobby;
     private Set<Contact> contactsHobbyList = new HashSet<Contact>();
-    private List<Contact> contactList;
+
 
     @Override
     public void addHobby(Hobby hobby) {
@@ -28,13 +28,16 @@ public class HobbyDao implements InterfaceHobbyDao {
     public Set<Contact> getAiiContactsWithHobby(Hobby title) {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("myJavaContact.xml");
         ContactDao contactDao = (ContactDao) context.getBean("ContactDao");
+        List<Contact> contactList = contactDao.getContactlist();
+        if (contactList == null) return null;
 
-        if (contactsHobbyList == null) return null;
-        contactList = contactDao.getContactlist();
         for (int i = 0; i < contactList.size() ; i++) {
-            if (contactList.get(i).getHobbies().equals(title)){
-                contactsHobbyList.add(contactList.get(i));
+            for (int j = 0; j <contactList.get(i).getHobbies().size() ; j++) {
+                if (contactList.get(i).getHobbies().contains(title)){
+                    contactsHobbyList.add(contactList.get(i));
+                }
             }
+
         }
         return contactsHobbyList;
     }
@@ -44,9 +47,9 @@ public class HobbyDao implements InterfaceHobbyDao {
 
     @Override
     public String toString() {
-        return "HobbyDao : " +
-                "listHobby= " + listHobby +
-                ", contactsHobbyList= " + contactsHobbyList +
-                ", contactList= " + contactList;
+        return "HobbyDao{" +
+                "listHobby=" + listHobby +
+                ", contactsHobbyList=" + contactsHobbyList +
+                '}';
     }
 }
