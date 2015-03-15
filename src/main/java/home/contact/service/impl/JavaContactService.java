@@ -46,7 +46,7 @@ public class JavaContactService implements InterfaceJavaContactService {
     public Set<Contact> getFriendList(Contact contact) {
         Set<Contact> contactSet = new HashSet<Contact>();
 //        if (contactDao.getListFriend().containsKey(contact.getIdContact())){
-        Map<Integer, Set<Contact>> map = new HashMap<>();
+        Map<Integer, Set<Contact>> map = new HashMap<Integer, Set<Contact>>();
         map = contactDao.getListFriend();
 //            contactSet = contactDao.getListFriend().get(contact.getIdContact());
         contactSet = map.get(contact.getIdContact());

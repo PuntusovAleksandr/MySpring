@@ -10,7 +10,7 @@ import java.util.*;
  */
 public class ContactDao implements InterfaceContactDao {
     private List<Contact> contactlist = new ArrayList<Contact>();
-    private Map<Integer, Set<Contact>> listFriend = new HashMap<>();
+    private Map<Integer, Set<Contact>> listFriend = new HashMap<Integer, Set<Contact>>();
     private Set<Contact> contactFriendShipList;
 
 
@@ -30,7 +30,7 @@ public class ContactDao implements InterfaceContactDao {
     @Override
     public void addFriendShip(Contact contactOne, Contact contactTwo) {
             if ((listFriend.get(contactOne.getIdContact()))==null){
-                contactFriendShipList = new HashSet<>();
+                contactFriendShipList = new HashSet<Contact>();
                 contactFriendShipList.add(contactTwo);
                 listFriend.put(contactOne.getIdContact(), contactFriendShipList);
             }else {

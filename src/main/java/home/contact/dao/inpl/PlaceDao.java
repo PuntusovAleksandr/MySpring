@@ -29,7 +29,7 @@ public class PlaceDao implements InterfacePlaceDao{
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("myJavaContact.xml");
         ContactDao contactDao = (ContactDao) context.getBean("ContactDao");
         List<Contact> contacList= contactDao.getContactlist();
-        Set<Contact> contactsPlaceList = new HashSet<>();
+        Set<Contact> contactsPlaceList = new HashSet<Contact>();
         if (placeList==null)return null;
 
         for (int i = 0; i < contacList.size() ; i++) {

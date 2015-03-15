@@ -2,11 +2,19 @@ package home.contact.dao.inpl;
 
 import org.junit.Test;
 
+
+
+
 public class ContactDaoTest {
+//    @Mock
+//    private InterfaceContactDao interfaceContactDao;
+//    @InjectMocks
+//    private ContactDao contactDao = new ContactDao();
+
 
     @Test
     public void testAddContact() throws Exception {
-
+//        InterfaceContactDao interfaceContactDao1 =
     }
 
     @Test
