@@ -1,8 +1,9 @@
 package home.contact.dao.inpl;
 
+import home.contact.dao.InterfaceHobbyDao;
 import home.contact.model.Contact;
 import home.contact.model.Hobby;
-import home.contact.dao.InterfaceHobbyDao;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.HashSet;
 import java.util.List;
@@ -25,8 +26,11 @@ public class HobbyDao implements InterfaceHobbyDao {
 
     @Override
     public Set<Contact> getAiiContactsWithHobby(Hobby title) {
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("myJavaContact.xml");
+        ContactDao contactDao = (ContactDao) context.getBean("ContactDao");
+
         if (contactsHobbyList == null) return null;
-        contactList = new ContactDao().getContactlist();
+        contactList = contactDao.getContactlist();
         for (int i = 0; i < contactList.size() ; i++) {
             if (contactList.get(i).getHobbies().equals(title)){
                 contactsHobbyList.add(contactList.get(i));
