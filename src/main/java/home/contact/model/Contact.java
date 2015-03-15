@@ -12,11 +12,7 @@ public class Contact {
     private LocalDate birthDate;
     private Set<Hobby> hobbies;
     private Set<Place> places;
-
-
-    public LocalDate getBirthDate() {
-        return birthDate;
-    }
+    private int idContact;
 
     public Contact(){}
 
@@ -28,6 +24,10 @@ public class Contact {
 
     public String getFirstName() {
         return firstName;
+    }
+
+    public LocalDate getBirthDate() {
+        return birthDate;
     }
 
     public void setFirstName(String firstName) {
@@ -66,6 +66,14 @@ public class Contact {
         this.places = places;
     }
 
+    public int getIdContact() {
+        return idContact;
+    }
+
+    public void setIdContact(int idContact) {
+        this.idContact = idContact;
+    }
+
     @Override
     public String toString() {
         return "Contact{" +
@@ -74,6 +82,7 @@ public class Contact {
                 ", birthDate=" + birthDate +
                 ", hobbies=" + hobbies +
                 ", places=" + places +
+                ", idContact=" + idContact +
                 '}';
     }
 }
