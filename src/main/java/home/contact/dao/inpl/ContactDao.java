@@ -18,6 +18,7 @@ public class ContactDao implements InterfaceContactDao {
     public void addContact(Contact contact) {
         contactlist.add(contact);
         contact.setIdContact(contactlist.size() + 1);
+        System.out.println("===============" + contact.getIdContact()+"============");
         listFriend.put(contact.getIdContact(), new HashSet<Contact>());
     }
 
@@ -33,7 +34,7 @@ public class ContactDao implements InterfaceContactDao {
                 contactFriendShipList.add(contactTwo);
                 listFriend.put(contactOne.getIdContact(), contactFriendShipList);
             }else {
-                contactFriendShipList = new HashSet<>();
+//                contactFriendShipList = new HashSet<>();
                 contactFriendShipList = listFriend.get(contactOne.getIdContact());
                 contactFriendShipList.add(contactTwo);
                 listFriend.put(contactOne.getIdContact(), contactFriendShipList);

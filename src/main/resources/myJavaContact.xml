@@ -55,6 +55,7 @@
             </set>
         </property>
         <property name="birthDate" ref="localDate1"/>
+        <property name="idContact" value="1"/>
     </bean>
     <bean id="Contact2" name="Contact2" class="home.contact.model.Contact">
         <property name="firstName" value="Maks"/>
@@ -72,6 +73,7 @@
                 <ref bean="PlaceOdessa"/>
             </set>
         </property>
+        <property name="idContact" value="2"/>
     </bean>
     <bean id="Contact3" name="Contact3" class="home.contact.model.Contact">
         <property name="firstName" value="Ivan"/>
@@ -91,6 +93,7 @@
             </set>
         </property>
         <property name="birthDate" ref="localDate2"/>
+        <property name="idContact" value="3"/>
     </bean>
     <bean id="Contact4" name="Contact4" class="home.contact.model.Contact">
         <property name="firstName" value="Vasilij"/>
@@ -108,6 +111,7 @@
                 <ref bean="PlaceKiev"/>
             </set>
         </property>
+        <property name="idContact" value="4"/>
     </bean>
     <bean id="Contact5" name="Contact5" class="home.contact.model.Contact">
         <property name="firstName" value="Oleg"/>
@@ -126,6 +130,7 @@
             </set>
         </property>
         <property name="birthDate" ref="localDate3"/>
+        <property name="idContact" value="5"/>
     </bean>
 
     <bean id="HobbyRally" name="Rally" class="home.contact.model.Hobby">

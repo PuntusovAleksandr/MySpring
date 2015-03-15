@@ -10,8 +10,9 @@ public class Place {
     private String description;
 
     public Place(){}
+    public Place(String title){}
 
-    public Place(String title,String description, double longitude, double latitude) {
+    public Place(String title,String  description, double longitude, double latitude) {
         this.title = title;
         this.longitude = longitude;
         this.latitude = latitude;

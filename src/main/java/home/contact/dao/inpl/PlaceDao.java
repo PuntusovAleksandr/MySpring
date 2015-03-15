@@ -44,7 +44,7 @@ public class PlaceDao implements InterfacePlaceDao{
 
     @Override
     public String toString() {
-        return "PlaceDaoList= " + placeList;
+        return "PlaceDaoList=" + placeList;
     }
 }
 

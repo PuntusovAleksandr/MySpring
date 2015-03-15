@@ -1,20 +1,17 @@
 package home.contact.service.impl;
 
-import home.contact.service.InterfaceJavaContactService;
-import home.contact.model.Contact;
-import home.contact.model.Hobby;
-import home.contact.model.MessageContact;
-import home.contact.model.Place;
 import home.contact.dao.inpl.ContactDao;
 import home.contact.dao.inpl.HobbyDao;
 import home.contact.dao.inpl.MessageDao;
 import home.contact.dao.inpl.PlaceDao;
+import home.contact.model.Contact;
+import home.contact.model.Hobby;
+import home.contact.model.MessageContact;
+import home.contact.model.Place;
+import home.contact.service.InterfaceJavaContactService;
 
 import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Created by Aleksandr on 07.03.2015.
@@ -36,8 +33,8 @@ public class JavaContactService implements InterfaceJavaContactService {
     }
 
     @Override
-    public void addPlace(String description, String title, double longitude, double latitude) {
-        placeDao.addPlace(new Place(title, description,longitude, latitude ));
+    public void addPlace(String title, String description , double longitude, double latitude) {
+        placeDao.addPlace(new Place(title , description,longitude, latitude ));
     }
 
     @Override
@@ -48,17 +45,15 @@ public class JavaContactService implements InterfaceJavaContactService {
     @Override
     public Set<Contact> getFriendList(Contact contact) {
         Set<Contact> contactSet = new HashSet<Contact>();
-        String idContact = contact.getFirstName()+contact.getLastName();
-
-        if (contactDao.getListFriend()==null) {
-            System.out.println("List friend not found");
-        }else {
-            for (Map.Entry entry : contactDao.getListFriend().entrySet()){
-                if (entry.getKey().equals(idContact)) {
-                    contactSet = (Set<Contact>) entry.getValue();
-                }
-            }
-        }
+//        if (contactDao.getListFriend().containsKey(contact.getIdContact())){
+        Map<Integer, Set<Contact>> map = new HashMap<>();
+        map = contactDao.getListFriend();
+//            contactSet = contactDao.getListFriend().get(contact.getIdContact());
+        contactSet = map.get(contact.getIdContact());
+        System.out.println("+++++++++++++++ "+ contact.getIdContact()+"++++++++++++++++++++++++++");
+//        }else {
+//            System.out.println("List friend not found");
+//        }
         return contactSet;
     }
 

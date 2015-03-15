@@ -14,7 +14,7 @@ public interface InterfaceJavaContactService {
 
     public void createContact (String name, String lastName, LocalDate birthDay);
     public void addHobby(String description, String title);
-    public void addPlace(String description, String title, double longitude, double latitude);
+    public void addPlace(String title , String description , double longitude, double latitude);
     public void addFriendShip (Contact name, Contact lastName);
     public Set<Contact> getFriendList(Contact contact);
     public List<MessageContact> getConversation(Contact contact, Contact name );
