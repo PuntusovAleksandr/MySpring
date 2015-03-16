@@ -1,20 +1,25 @@
 package home.contact.dao.inpl;
 
+import home.contact.dao.InterfaceContactDao;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.runners.MockitoJUnitRunner;
+
+import static org.mockito.Mockito.when;
 
 
-
-
+@RunWith(MockitoJUnitRunner.class)
 public class ContactDaoTest {
-//    @Mock
-//    private InterfaceContactDao interfaceContactDao;
-//    @InjectMocks
-//    private ContactDao contactDao = new ContactDao();
-
+    @Mock
+    private InterfaceContactDao interfaceContactDao;
+    @InjectMocks
+    private ContactDao contactDao = new ContactDao();
 
     @Test
     public void testAddContact() throws Exception {
-//        InterfaceContactDao interfaceContactDao1 =
+
     }
 
     @Test
@@ -34,41 +39,7 @@ public class ContactDaoTest {
 
     @Test
     public void testCountContact() throws Exception {
-
+        when(interfaceContactDao.countContact()).thenReturn(1);
     }
 
-    @Test
-    public void testSetContactlist() throws Exception {
-
-    }
-
-    @Test
-    public void testGetContactlist() throws Exception {
-
-    }
-
-    @Test
-    public void testGetListFriend() throws Exception {
-
-    }
-
-    @Test
-    public void testSetListFriend() throws Exception {
-
-    }
-
-    @Test
-    public void testGetContactFriendShipList() throws Exception {
-
-    }
-
-    @Test
-    public void testSetContactFriendShipList() throws Exception {
-
-    }
-
-    @Test
-    public void testToString() throws Exception {
-
-    }
 }

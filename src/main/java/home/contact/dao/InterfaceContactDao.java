@@ -12,4 +12,7 @@ public interface InterfaceContactDao {
     public void addFriendShip(Contact contactOne, Contact contactTwo);
     public void removeFriendship(Contact contactOne, Contact contactTwo);
     public int countContact();
+
+
+
 }
