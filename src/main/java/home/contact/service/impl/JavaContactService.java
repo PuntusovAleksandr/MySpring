@@ -22,6 +22,8 @@ public class JavaContactService implements InterfaceJavaContactService {
     private PlaceDao placeDao;
     private MessageDao messageDao;
 
+
+
     @Override
     public void createContact(String name, String lastName, LocalDate birthDay) {
         contactDao.addContact(new Contact(name, lastName, birthDay));
