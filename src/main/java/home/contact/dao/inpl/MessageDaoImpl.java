@@ -33,4 +33,10 @@ public class MessageDaoImpl implements MessageDao {
         }
         return messageConversation;
     }
+
+    @Override
+    public String toString() {
+        return "MessageDaoImpl{" + messagesContacts +
+                '}';
+    }
 }

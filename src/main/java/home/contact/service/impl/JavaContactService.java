@@ -89,4 +89,14 @@ public class JavaContactService implements ContactService {
     public void setMessageDaoImpl(MessageDaoImpl messageDaoImpl) {
         this.messageDaoImpl = messageDaoImpl;
     }
+
+    @Override
+    public String toString() {
+        return "JavaContactService{" +
+                "contactDaoImpl=" + contactDaoImpl +
+                ", hobbyDaoImpl=" + hobbyDaoImpl +
+                ", placeDaoImpl=" + placeDaoImpl +
+                ", messageDaoImpl=" + messageDaoImpl +
+                '}';
+    }
 }

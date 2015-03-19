@@ -82,4 +82,17 @@ public class Contact {
     public void setFriends(Set<Contact> friends) {
         this.friends = friends;
     }
+
+    @Override
+    public String toString() {
+        return "Contact{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", birthDate=" + birthDate +
+                ", hobbies=" + hobbies +
+                ", places=" + places +
+                ", idContact=" + idContact +
+                ", friends=" + friends +
+                '}';
+    }
 }
