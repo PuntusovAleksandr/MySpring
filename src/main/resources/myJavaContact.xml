@@ -6,13 +6,13 @@
                            http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
     <bean id="JavaContact" class="home.contact.service.impl.JavaContactService">
-        <property name="contactDao" ref="ContactDao"/>
-        <property name="hobbyDao" ref="HobbyDao"/>
-        <property name="messegeDao" ref="MessegeDao"/>
-        <property name="placeDao" ref="PlaceDao"/>
+        <property name="contactDaoImpl" ref="ContactDaoImpl"/>
+        <property name="hobbyDaoImpl" ref="HobbyDaoImpl"/>
+        <property name="messageDaoImpl" ref="MessageDaoImpl"/>
+        <property name="placeDaoImpl" ref="PlaceDaoImpl"/>
     </bean>
 
-    <bean id="ContactDao" class="home.contact.dao.inpl.ContactDao">
+    <bean id="ContactDaoImpl" class="home.contact.dao.inpl.ContactDaoImpl">
         <property name="contactlist">
             <list value-type="java.util.List">
                 <ref bean="Contact1"/>
@@ -23,7 +23,7 @@
             </list>
         </property>
     </bean>
-    <bean id="HobbyDao" class="home.contact.dao.inpl.HobbyDao">
+    <bean id="HobbyDaoImpl" class="home.contact.dao.inpl.HobbyDaoImpl">
         <property name="listHobby">
             <list value-type="java.util.ArrayList">
                 <ref bean="HobbyRally"/>
@@ -33,8 +33,8 @@
             </list>
         </property>
     </bean>
-    <bean id="MessegeDao" class="home.contact.dao.inpl.MessageDao"/>
-    <bean id="PlaceDao" class="home.contact.dao.inpl.PlaceDao"/>
+    <bean id="MessageDaoImpl" class="home.contact.dao.inpl.MessageDaoImpl"/>
+    <bean id="PlaceDaoImpl" class="home.contact.dao.inpl.PlaceDaoImpl"/>
 
     <bean id="Contact1" name="Contact1" class="home.contact.model.Contact">
         <property name="firstName" value="Aleks"/>

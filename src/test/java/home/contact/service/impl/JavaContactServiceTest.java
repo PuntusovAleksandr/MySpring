@@ -1,14 +1,13 @@
 package home.contact.service.impl;
 
-import home.contact.dao.InterfaceContactDao;
-import home.contact.dao.InterfaceHobbyDao;
-import home.contact.dao.InterfaceMessageDao;
-import home.contact.dao.InterfacePlaceDao;
+import home.contact.dao.ContactDao;
+import home.contact.dao.HobbyDao;
+import home.contact.dao.MessageDao;
+import home.contact.dao.PlaceDao;
 import home.contact.model.Contact;
-import home.contact.service.InterfaceJavaContactService;
+import home.contact.service.ContactService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.InOrder;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.exceptions.verification.TooLittleActualInvocations;
@@ -25,29 +24,33 @@ public class JavaContactServiceTest {
 
 
     @Mock
-    private InterfaceJavaContactService interfaceJavaContactService;
+    private ContactService interfaceJavaContactService;
     @Mock
-    private InterfaceContactDao interfaceContactDao;
+    private ContactDao contactDao;
     @Mock
-    private InterfaceHobbyDao interfaceHobbyDao;
+    private HobbyDao hobbyDao;
     @Mock
-    private InterfaceMessageDao interfaceMessageDao;
+    private MessageDao messageDao;
     @Mock
-    private InterfacePlaceDao interfacePlaceDao;
+    private PlaceDao placeDao;
 
     @InjectMocks
     private JavaContactService javaContactService = new JavaContactService();
 
     @Test(expected = TooLittleActualInvocations.class)
     public void testCreateContact() throws Exception {
-        interfaceJavaContactService.createContact(anyString(), anyString(), (LocalDate) anyObject());
-        verify(interfaceJavaContactService).createContact(anyString(), anyString(), (LocalDate) anyObject());
-        interfaceJavaContactService.createContact(anyString(), anyString(), (LocalDate) anyObject());
-        verify(interfaceJavaContactService, times(3)).createContact(anyString(), anyString(), (LocalDate) anyObject());
-        verify(interfaceJavaContactService, never()).createContact("Vas", "Das", null);
 
-        InOrder inOrder = inOrder(interfaceJavaContactService);
-        inOrder.verify(interfaceJavaContactService).createContact(anyString(), anyString(), (LocalDate) anyObject());
+        javaContactService.createContact(anyString(), anyString(), (LocalDate) anyObject());
+        verify(contactDao).addContact(new Contact());
+
+//        interfaceJavaContactService.createContact(anyString(), anyString(), (LocalDate) anyObject());
+//        verify(interfaceJavaContactService).createContact(anyString(), anyString(), (LocalDate) anyObject());
+//        interfaceJavaContactService.createContact(anyString(), anyString(), (LocalDate) anyObject());
+//        verify(interfaceJavaContactService, times(3)).createContact(anyString(), anyString(), (LocalDate) anyObject());
+//        verify(interfaceJavaContactService, never()).createContact("Vas", "Das", null);
+//
+//        InOrder inOrder = inOrder(interfaceJavaContactService);
+//        inOrder.verify(interfaceJavaContactService).createContact(anyString(), anyString(), (LocalDate) anyObject());
     }
 
     @Test
@@ -86,8 +89,8 @@ public class JavaContactServiceTest {
         Contact con2 = new Contact();
         con1.setFirstName("a");
         con2.setFirstName("aa");
-        interfaceContactDao.addContact(con1);
-        interfaceContactDao.addContact(con2);
+        contactDao.addContact(con1);
+        contactDao.addContact(con2);
         interfaceJavaContactService.addFriendShip(con1, con2);
         when(interfaceJavaContactService.getFriendList(con1)).thenReturn(Collections.EMPTY_SET);
     }

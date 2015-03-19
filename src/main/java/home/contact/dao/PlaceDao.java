@@ -8,7 +8,7 @@ import java.util.Set;
 /**
  * Created by Aleksandr on 11.03.2015.
  */
-public interface InterfacePlaceDao {
+public interface PlaceDao {
     public  void  addPlace(Place title);
     public Set<Contact> getAllContactsPlace(Place title);
 }

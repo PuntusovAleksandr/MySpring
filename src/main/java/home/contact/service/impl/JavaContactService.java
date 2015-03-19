@@ -1,14 +1,14 @@
 package home.contact.service.impl;
 
-import home.contact.dao.inpl.ContactDao;
-import home.contact.dao.inpl.HobbyDao;
-import home.contact.dao.inpl.MessageDao;
-import home.contact.dao.inpl.PlaceDao;
+import home.contact.dao.inpl.ContactDaoImpl;
+import home.contact.dao.inpl.HobbyDaoImpl;
+import home.contact.dao.inpl.MessageDaoImpl;
+import home.contact.dao.inpl.PlaceDaoImpl;
 import home.contact.model.Contact;
 import home.contact.model.Hobby;
-import home.contact.model.MessageContact;
+import home.contact.model.Message;
 import home.contact.model.Place;
-import home.contact.service.InterfaceJavaContactService;
+import home.contact.service.ContactService;
 
 import java.time.LocalDate;
 import java.util.*;
@@ -16,83 +16,77 @@ import java.util.*;
 /**
  * Created by Aleksandr on 07.03.2015.
  */
-public class JavaContactService implements InterfaceJavaContactService {
-    private ContactDao contactDao;
-    private HobbyDao hobbyDao;
-    private PlaceDao placeDao;
-    private MessageDao messageDao;
+public class JavaContactService implements ContactService {
+
+	//TODO замени реализации тут на интерфейсы и работай через них - ? не понял что надо делать - через xml?
+    private ContactDaoImpl contactDaoImpl;
+    private HobbyDaoImpl hobbyDaoImpl;
+    private PlaceDaoImpl placeDaoImpl;
+    private MessageDaoImpl messageDaoImpl;
 
 
 
     @Override
     public void createContact(String name, String lastName, LocalDate birthDay) {
-        contactDao.addContact(new Contact(name, lastName, birthDay));
+        contactDaoImpl.addContact(new Contact(name, lastName, birthDay));
     }
 
     @Override
     public void addHobby(String description, String title) {
-        hobbyDao.addHobby(new Hobby(title, description));
+        hobbyDaoImpl.addHobby(new Hobby(title, description));
     }
 
     @Override
     public void addPlace(String title, String description , double longitude, double latitude) {
-        placeDao.addPlace(new Place(title , description,longitude, latitude ));
+        placeDaoImpl.addPlace(new Place(title , description,longitude, latitude ));
     }
 
     @Override
     public void addFriendShip(Contact contactOne, Contact contactTwo) {
-        contactDao.addFriendShip(contactOne, contactTwo);
+        contactDaoImpl.addFriendShip(contactOne, contactTwo);
     }
 
     @Override
     public Set<Contact> getFriendList(Contact contact) {
         Set<Contact> contactSet = new HashSet<Contact>();
-//        if (contactDao.getListFriend().containsKey(contact.getIdContact())){
-        Map<Integer, Set<Contact>> map = new HashMap<Integer, Set<Contact>>();
-        map = contactDao.getListFriend();
-//            contactSet = contactDao.getListFriend().get(contact.getIdContact());
-        contactSet = map.get(contact.getIdContact());
-        System.out.println("+++++++++++++++ "+ contact.getIdContact()+"++++++++++++++++++++++++++");
-//        }else {
-//            System.out.println("List friend not found");
-//        }
+        contactSet = (Set<Contact>) contact.getFriends();
         return contactSet;
     }
 
     @Override
-    public List<MessageContact> getConversation(Contact contactOne, Contact contactTwo) {
-        return messageDao.getConversation(contactOne, contactTwo);
+    public List<Message> getConversation(Contact contactOne, Contact contactTwo) {
+        return messageDaoImpl.getConversation(contactOne, contactTwo);
     }
 
-    public ContactDao getContactDao() {
-        return contactDao;
+    public ContactDaoImpl getContactDaoImpl() {
+        return contactDaoImpl;
     }
 
-    public void setContactDao(ContactDao contactDao) {
-        this.contactDao = contactDao;
+    public void setContactDaoImpl(ContactDaoImpl contactDaoImpl) {
+        this.contactDaoImpl = contactDaoImpl;
     }
 
-    public HobbyDao getHobbyDao() {
-        return hobbyDao;
+    public HobbyDaoImpl getHobbyDaoImpl() {
+        return hobbyDaoImpl;
     }
 
-    public void setHobbyDao(HobbyDao hobbyDao) {
-        this.hobbyDao = hobbyDao;
+    public void setHobbyDaoImpl(HobbyDaoImpl hobbyDaoImpl) {
+        this.hobbyDaoImpl = hobbyDaoImpl;
     }
 
-    public PlaceDao getPlaceDao() {
-        return placeDao;
+    public PlaceDaoImpl getPlaceDaoImpl() {
+        return placeDaoImpl;
     }
 
-    public void setPlaceDao(PlaceDao placeDao) {
-        this.placeDao = placeDao;
+    public void setPlaceDaoImpl(PlaceDaoImpl placeDaoImpl) {
+        this.placeDaoImpl = placeDaoImpl;
     }
 
-    public MessageDao getMessegeDao() {
-        return messageDao;
+    public MessageDaoImpl getMessageDaoImpl() {
+        return messageDaoImpl;
     }
 
-    public void setMessegeDao(MessageDao messegeDao) {
-        this.messageDao = messegeDao;
+    public void setMessageDaoImpl(MessageDaoImpl messageDaoImpl) {
+        this.messageDaoImpl = messageDaoImpl;
     }
 }

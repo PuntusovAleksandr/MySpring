@@ -12,6 +12,11 @@ public class Place {
     public Place(){}
     public Place(String title){}
 
+    public Place(String title, double longitude) {
+        this.title = title;
+        this.longitude = longitude;
+    }
+
     public Place(String title,String  description, double longitude, double latitude) {
         this.title = title;
         this.longitude = longitude;

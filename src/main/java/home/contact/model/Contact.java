@@ -1,6 +1,7 @@
 package home.contact.model;
 
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -13,6 +14,7 @@ public class Contact {
     private Set<Hobby> hobbies;
     private Set<Place> places;
     private int idContact;
+    private Set<Contact> friends;
 
     public Contact(){}
 
@@ -24,10 +26,6 @@ public class Contact {
 
     public String getFirstName() {
         return firstName;
-    }
-
-    public LocalDate getBirthDate() {
-        return birthDate;
     }
 
     public void setFirstName(String firstName) {
@@ -42,7 +40,7 @@ public class Contact {
         this.lastName = lastName;
     }
 
-    public LocalDate getBirthDate(LocalDate birthDay) {
+    public LocalDate getBirthDate() {
         return birthDate;
     }
 
@@ -51,6 +49,7 @@ public class Contact {
     }
 
     public Set<Hobby> getHobbies() {
+        if (hobbies == null) hobbies = new HashSet<Hobby>();
         return hobbies;
     }
 
@@ -59,6 +58,7 @@ public class Contact {
     }
 
     public Set<Place> getPlaces() {
+        if (places == null) places = new HashSet<Place>();
         return places;
     }
 
@@ -74,16 +74,12 @@ public class Contact {
         this.idContact = idContact;
     }
 
-    @Override
-    public String toString() {
-        return "Contact{" +
-                "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", birthDate=" + birthDate +
-                ", hobbies=" + hobbies +
-                ", places=" + places +
-                ", idContact=" + idContact +
-                '}';
+    public Set<Contact> getFriends() {
+        if (friends == null) friends = new HashSet<Contact>();
+        return friends;
     }
 
+    public void setFriends(Set<Contact> friends) {
+        this.friends = friends;
+    }
 }

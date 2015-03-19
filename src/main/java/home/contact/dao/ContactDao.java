@@ -5,7 +5,7 @@ import home.contact.model.Contact;
 /**
  * Created by Aleksandr on 11.03.2015.
  */
-public interface InterfaceContactDao {
+public interface ContactDao {
 
     public void addContact(Contact contact);
     public void deleteContact(Contact contact);

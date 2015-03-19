@@ -1,18 +1,21 @@
 package home.contact.model;
 
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 /**
  * Created by Aleksandr on 07.03.2015.
  */
-public class MessageContact {
-    private LocalDateTime date;
+public class Message {
+    private LocalDate date;
     private Contact from;
     private Contact to;
     private String content;
 
-    public MessageContact(LocalDateTime date, String content) {
+    public Message() {
+    }
+
+    public Message(LocalDate date, String content) {
         this.date = date.now();
         this.content = content;
     }
