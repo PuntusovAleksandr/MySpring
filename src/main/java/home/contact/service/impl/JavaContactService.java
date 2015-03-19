@@ -1,5 +1,9 @@
 package home.contact.service.impl;
 
+import home.contact.dao.ContactDao;
+import home.contact.dao.HobbyDao;
+import home.contact.dao.MessageDao;
+import home.contact.dao.PlaceDao;
 import home.contact.dao.inpl.ContactDaoImpl;
 import home.contact.dao.inpl.HobbyDaoImpl;
 import home.contact.dao.inpl.MessageDaoImpl;
@@ -18,32 +22,36 @@ import java.util.*;
  */
 public class JavaContactService implements ContactService {
 
-	//TODO замени реализации тут на интерфейсы и работай через них - ? не понял что надо делать - через xml?
-    private ContactDaoImpl contactDaoImpl;
-    private HobbyDaoImpl hobbyDaoImpl;
-    private PlaceDaoImpl placeDaoImpl;
-    private MessageDaoImpl messageDaoImpl;
+	//TODO замени реализации тут на интерфейсы и работай через них - ?
+    private ContactDao contactDao;
+    private HobbyDao hobbyDao;
+    private PlaceDao placeDao;
+    private MessageDao messageDao;
 
 
 
     @Override
     public void createContact(String name, String lastName, LocalDate birthDay) {
-        contactDaoImpl.addContact(new Contact(name, lastName, birthDay));
+        contactDao.addContact(new Contact(name, lastName, birthDay));
+    }
+    @Override
+    public void createContact(String name, String lastName) {
+        contactDao.addContact(new Contact(name, lastName));
     }
 
     @Override
     public void addHobby(String description, String title) {
-        hobbyDaoImpl.addHobby(new Hobby(title, description));
+        hobbyDao.addHobby(new Hobby(title, description));
     }
 
     @Override
     public void addPlace(String title, String description , double longitude, double latitude) {
-        placeDaoImpl.addPlace(new Place(title , description,longitude, latitude ));
+        placeDao.addPlace(new Place(title , description,longitude, latitude ));
     }
 
     @Override
     public void addFriendShip(Contact contactOne, Contact contactTwo) {
-        contactDaoImpl.addFriendShip(contactOne, contactTwo);
+        contactDao.addFriendShip(contactOne, contactTwo);
     }
 
     @Override
@@ -55,48 +63,46 @@ public class JavaContactService implements ContactService {
 
     @Override
     public List<Message> getConversation(Contact contactOne, Contact contactTwo) {
-        return messageDaoImpl.getConversation(contactOne, contactTwo);
+        return messageDao.getConversation(contactOne, contactTwo);
     }
 
-    public ContactDaoImpl getContactDaoImpl() {
-        return contactDaoImpl;
-    }
+
 
     public void setContactDaoImpl(ContactDaoImpl contactDaoImpl) {
-        this.contactDaoImpl = contactDaoImpl;
+        this.contactDao = contactDaoImpl;
     }
 
     public HobbyDaoImpl getHobbyDaoImpl() {
-        return hobbyDaoImpl;
+        return (HobbyDaoImpl) hobbyDao;
     }
 
     public void setHobbyDaoImpl(HobbyDaoImpl hobbyDaoImpl) {
-        this.hobbyDaoImpl = hobbyDaoImpl;
+        this.hobbyDao = hobbyDaoImpl;
     }
 
     public PlaceDaoImpl getPlaceDaoImpl() {
-        return placeDaoImpl;
+        return (PlaceDaoImpl) placeDao;
     }
 
     public void setPlaceDaoImpl(PlaceDaoImpl placeDaoImpl) {
-        this.placeDaoImpl = placeDaoImpl;
+        this.placeDao = placeDaoImpl;
     }
 
     public MessageDaoImpl getMessageDaoImpl() {
-        return messageDaoImpl;
+        return (MessageDaoImpl) messageDao;
     }
 
     public void setMessageDaoImpl(MessageDaoImpl messageDaoImpl) {
-        this.messageDaoImpl = messageDaoImpl;
+        this.messageDao = messageDaoImpl;
     }
 
     @Override
     public String toString() {
         return "JavaContactService{" +
-                "contactDaoImpl=" + contactDaoImpl +
-                ", hobbyDaoImpl=" + hobbyDaoImpl +
-                ", placeDaoImpl=" + placeDaoImpl +
-                ", messageDaoImpl=" + messageDaoImpl +
+                "contactDaoImpl=" + contactDao +
+                ", hobbyDaoImpl=" + hobbyDao +
+                ", placeDaoImpl=" + placeDao +
+                ", messageDaoImpl=" + messageDao +
                 '}';
     }
 }

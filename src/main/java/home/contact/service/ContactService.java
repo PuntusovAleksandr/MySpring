@@ -13,6 +13,7 @@ import java.util.Set;
 public interface ContactService {
 
     public void createContact (String name, String lastName, LocalDate birthDay);
+    public void createContact (String name, String lastName);
     public void addHobby(String description, String title);
     public void addPlace(String title , String description , double longitude, double latitude);
     public void addFriendShip (Contact name, Contact lastName);

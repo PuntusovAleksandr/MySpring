@@ -5,12 +5,13 @@ import home.contact.dao.HobbyDao;
 import home.contact.dao.MessageDao;
 import home.contact.dao.PlaceDao;
 import home.contact.model.Contact;
+import home.contact.model.Hobby;
+import home.contact.model.Place;
 import home.contact.service.ContactService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.exceptions.verification.TooLittleActualInvocations;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import java.time.LocalDate;
@@ -37,46 +38,35 @@ public class JavaContactServiceTest {
     @InjectMocks
     private JavaContactService javaContactService = new JavaContactService();
 
-    @Test(expected = TooLittleActualInvocations.class)
+    @Test
     public void testCreateContact() throws Exception {
-
-        javaContactService.createContact(anyString(), anyString(), (LocalDate) anyObject());
-        verify(contactDao).addContact(new Contact());
-
-//        interfaceJavaContactService.createContact(anyString(), anyString(), (LocalDate) anyObject());
-//        verify(interfaceJavaContactService).createContact(anyString(), anyString(), (LocalDate) anyObject());
-//        interfaceJavaContactService.createContact(anyString(), anyString(), (LocalDate) anyObject());
-//        verify(interfaceJavaContactService, times(3)).createContact(anyString(), anyString(), (LocalDate) anyObject());
-//        verify(interfaceJavaContactService, never()).createContact("Vas", "Das", null);
-//
-//        InOrder inOrder = inOrder(interfaceJavaContactService);
-//        inOrder.verify(interfaceJavaContactService).createContact(anyString(), anyString(), (LocalDate) anyObject());
+        javaContactService.createContact("a","b", any(LocalDate.class));
+        verify(contactDao).addContact((Contact) anyObject());
+        javaContactService.createContact("a","b");
+        verify(contactDao, times(2)).addContact((Contact) anyObject());
+        verify(interfaceJavaContactService, never()).createContact("Vas", "Das", null);
     }
 
     @Test
     public void testAddHobby() throws Exception {
-        interfaceJavaContactService.addHobby("hobby", "hobby");
-        verify(interfaceJavaContactService).addHobby(anyString(), anyString());
-        interfaceJavaContactService.addHobby("hobby", "hobby");
-        verify(interfaceJavaContactService, times(2)).addHobby(anyString(), anyString());
-        interfaceJavaContactService.addHobby(null, "hobby");
-        verify(interfaceJavaContactService, times(3)).addHobby(anyString(), anyString());
-        interfaceJavaContactService.addHobby("as", "hobby");
-        verify(interfaceJavaContactService, times(4)).addHobby(anyString(), anyString());
+        javaContactService.addHobby("hobby", "hobby");
+        verify(hobbyDao).addHobby((Hobby) anyObject());
+        javaContactService.addHobby("hobby", "hobby");
+        verify(hobbyDao, times(2)).addHobby((Hobby) anyObject());
     }
 
     @Test
     public void testAddPlace() throws Exception {
-        interfaceJavaContactService.addPlace("1", "2", 1.1, 2.2);
-        verify(interfaceJavaContactService).addPlace("1", "2", 1.1, 2.2);
+        javaContactService.addPlace("1", "2", 1.1, 2.2);
+        verify(placeDao).addPlace((Place) anyObject());
     }
 
     @Test
     public void testAddFriendShip() throws Exception {
         Contact con1 = new Contact();
         Contact con2 = new Contact();
-        interfaceJavaContactService.addFriendShip(con1, con2);
-        verify(interfaceJavaContactService).addFriendShip(isA(Contact.class), isA(Contact.class));
+        javaContactService.addFriendShip(con1, con2);
+        verify(contactDao).addFriendShip(isA(Contact.class), isA(Contact.class));
     }
 
     @Test
@@ -97,6 +87,8 @@ public class JavaContactServiceTest {
 
     @Test
     public void testGetConversation() throws Exception {;
-        when(interfaceJavaContactService.getConversation((Contact) anyObject(), (Contact) anyObject())).thenReturn(Collections.EMPTY_LIST);
+        when(javaContactService.getConversation((Contact) anyObject(), (Contact) anyObject())).thenReturn(Collections.EMPTY_LIST);
     }
+
+
 }
