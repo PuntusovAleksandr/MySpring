@@ -43,7 +43,6 @@ public class HobbyDaoImpl implements HobbyDao {
 
     @Override
     public Set<Hobby> getHobbies() {
-        if (listHobby == null) return null;
         return listHobby;
     }
 

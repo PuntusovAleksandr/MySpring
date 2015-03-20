@@ -26,15 +26,14 @@ public class ContactDaoImpl implements ContactDao {
 
     @Override
     public void deleteContact(Contact contact) {
-        contactlist.remove(contact.getIdContact() - 1);
+        contactlist.remove(contact);
     }
 
     @Override
     public void addFriendShip(Contact contactOne, Contact contactTwo) {
         //TODO Когда ты добавляешь дружбу для первогоконтакта - ты также должен добавить дружбу и второму
         //А метод get щ\здесь можно заменить на contains, в таком случае тебе не нужно сравнивать еще и с null
-        Set<Contact> l = new HashSet<Contact>();
-        l = contactOne.getFriends();
+        Set<Contact> l = contactOne.getFriends();
         l.add(contactTwo);
         l = contactTwo.getFriends();
         l.add(contactOne);
@@ -44,8 +43,7 @@ public class ContactDaoImpl implements ContactDao {
     public void removeFriendship(Contact contactOne, Contact contactTwo) {
         //TODO Аналогично и тут, удалять дружбу нужно у обоих
         //contactFriendShipList  = new HashSet<Contact>();
-        Set<Contact> l = new HashSet<Contact>();
-        l = contactOne.getFriends();
+        Set<Contact> l = contactOne.getFriends();
         l.remove(contactTwo);
         l = contactTwo.getFriends();
         l.remove(contactOne);
