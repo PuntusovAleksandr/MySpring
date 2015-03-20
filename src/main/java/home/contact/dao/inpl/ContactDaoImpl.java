@@ -2,12 +2,14 @@ package home.contact.dao.inpl;
 
 import home.contact.dao.ContactDao;
 import home.contact.model.Contact;
+import org.springframework.stereotype.Component;
 
 import java.util.*;
 
 /**
  * Created by Aleksandr on 07.03.2015.
  */
+@Component
 public class ContactDaoImpl implements ContactDao {
     private List<Contact> contactlist;
 //    private Map<Integer, Set<Contact>> listFriend = new HashMap<Integer, Set<Contact>>();

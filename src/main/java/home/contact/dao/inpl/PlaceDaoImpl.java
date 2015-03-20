@@ -1,9 +1,10 @@
 package home.contact.dao.inpl;
 
+import home.contact.dao.ContactDao;
 import home.contact.dao.PlaceDao;
 import home.contact.model.Contact;
 import home.contact.model.Place;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -15,6 +16,8 @@ import java.util.Set;
  */
 public class PlaceDaoImpl implements PlaceDao {
     private List<Place> placeList;
+    @Autowired
+    private ContactDao contactDao;
 
     @Override
     public void addPlace(Place title) {
@@ -25,9 +28,7 @@ public class PlaceDaoImpl implements PlaceDao {
     @Override
     public Set<Contact> getAllContactsPlace(Place title) {
         if (placeList==null)return null;
-        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("myJavaContact.xml");
-        ContactDaoImpl contactDaoImpl = (ContactDaoImpl) context.getBean("ContactDaoImpl");
-        List<Contact> contacList= contactDaoImpl.getContactlist();
+        List<Contact> contacList= contactDao.getContactlist();
         Set<Contact> contactsPlaceList = new HashSet<Contact>();
 
         for (int i = 0; i < contacList.size() ; i++) {

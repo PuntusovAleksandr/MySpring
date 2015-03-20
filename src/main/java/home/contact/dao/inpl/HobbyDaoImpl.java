@@ -1,9 +1,10 @@
 package home.contact.dao.inpl;
 
+import home.contact.dao.ContactDao;
 import home.contact.dao.HobbyDao;
 import home.contact.model.Contact;
 import home.contact.model.Hobby;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.HashSet;
 import java.util.List;
@@ -15,18 +16,13 @@ import java.util.Set;
 public class HobbyDaoImpl implements HobbyDao {
 
     private Set<Hobby> listHobby;
-
-    @Override
-    public void addHobby(Hobby hobby) {
-        if (listHobby==null) listHobby  = new HashSet<Hobby>();
-        listHobby.add(hobby);
-    }
+    @Autowired
+    private ContactDao contactDao;
 
     @Override
     public Set<Contact> getAiiContactsWithHobby(Hobby title) {
-        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("myJavaContact.xml");
-        ContactDaoImpl contactDaoImpl = (ContactDaoImpl) context.getBean("ContactDao");
-        List<Contact> contactList = contactDaoImpl.getContactlist();
+
+        List<Contact> contactList = contactDao.getContactlist();
         if (contactList == null) return null;
         Set<Contact> contactsHobbyList = new HashSet<Contact>();
         for (int i = 0; i < contactList.size() ; i++) {
@@ -39,6 +35,12 @@ public class HobbyDaoImpl implements HobbyDao {
             }
         }
         return contactsHobbyList;
+    }
+
+    @Override
+    public void addHobby(Hobby hobby) {
+        if (listHobby==null) listHobby  = new HashSet<Hobby>();
+        listHobby.add(hobby);
     }
 
     @Override
