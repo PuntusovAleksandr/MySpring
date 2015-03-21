@@ -1,5 +1,7 @@
 package home.contact.model;
 
+import javax.persistence.Column;
+import javax.persistence.Id;
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
@@ -8,12 +10,20 @@ import java.util.Set;
  * Created by Aleksandr on 07.03.2015.
  */
 public class Contact {
+    @Column
     private String firstName;
+    @Column
     private String lastName;
+    @Column
     private LocalDate birthDate;
+    @Column
     private Set<Hobby> hobbies;
+    @Column
     private Set<Place> places;
+    @Id
+    @Column
     private int idContact;
+    @Column
     private Set<Contact> friends;
 
     public Contact(){}
