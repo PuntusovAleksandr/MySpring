@@ -5,6 +5,7 @@ import home.contact.dao.PlaceDao;
 import home.contact.model.Contact;
 import home.contact.model.Place;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -14,6 +15,7 @@ import java.util.Set;
 /**
  * Created by Aleksandr on 07.03.2015.
  */
+@Component
 public class PlaceDaoImpl implements PlaceDao {
     private List<Place> placeList;
     @Autowired

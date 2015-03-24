@@ -1,11 +1,14 @@
 package home.contact.model;
 
 
+import org.springframework.stereotype.Component;
+
 import java.time.LocalDate;
 
 /**
  * Created by Aleksandr on 07.03.2015.
  */
+@Component
 public class Message {
     private LocalDate date;
     private Contact from;

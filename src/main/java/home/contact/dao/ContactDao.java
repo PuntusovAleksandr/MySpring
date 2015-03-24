@@ -3,6 +3,7 @@ package home.contact.dao;
 import home.contact.model.Contact;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Aleksandr on 11.03.2015.
@@ -17,4 +18,8 @@ public interface ContactDao {
 
 
     public List<Contact> getContactlist();
+
+    public int getIdContact(Contact contact);
+
+    public Set<Contact> getFriends(Contact contact);
 }

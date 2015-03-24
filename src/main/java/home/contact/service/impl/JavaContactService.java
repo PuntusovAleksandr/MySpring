@@ -13,6 +13,8 @@ import home.contact.model.Hobby;
 import home.contact.model.Message;
 import home.contact.model.Place;
 import home.contact.service.ContactService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.util.*;
@@ -20,15 +22,16 @@ import java.util.*;
 /**
  * Created by Aleksandr on 07.03.2015.
  */
+@Component
 public class JavaContactService implements ContactService {
-
-	//TODO замени реализации тут на интерфейсы и работай через них - ?
+    @Autowired
     private ContactDao contactDao;
+    @Autowired
     private HobbyDao hobbyDao;
+    @Autowired
     private PlaceDao placeDao;
+    @Autowired
     private MessageDao messageDao;
-
-
 
     @Override
     public void createContact(String name, String lastName, LocalDate birthDay) {
@@ -56,8 +59,7 @@ public class JavaContactService implements ContactService {
 
     @Override
     public Set<Contact> getFriendList(Contact contact) {
-        Set<Contact> contactSet = new HashSet<Contact>();
-        contactSet = (Set<Contact>) contact.getFriends();
+        Set<Contact> contactSet = contactDao.getFriends(contact);
         return contactSet;
     }
 
@@ -66,14 +68,27 @@ public class JavaContactService implements ContactService {
         return messageDao.getConversation(contactOne, contactTwo);
     }
 
-
+    @Override
+    public List<Contact> getAllContact() {
+        return contactDao.getContactlist();
+    }
 
     public void setContactDaoImpl(ContactDaoImpl contactDaoImpl) {
         this.contactDao = contactDaoImpl;
     }
 
-    public HobbyDaoImpl getHobbyDaoImpl() {
-        return (HobbyDaoImpl) hobbyDao;
+    public Set<Hobby> getHobbyDaoImpl(){
+        return hobbyDao.getHobbies();
+    }
+
+    @Override
+    public void deleteContact(Contact contact) {
+        contactDao.deleteContact(contact);
+    }
+
+    @Override
+    public int getIdContact(Contact contact) {
+        return contactDao.getIdContact(contact);
     }
 
     public void setHobbyDaoImpl(HobbyDaoImpl hobbyDaoImpl) {
@@ -95,6 +110,18 @@ public class JavaContactService implements ContactService {
     public void setMessageDaoImpl(MessageDaoImpl messageDaoImpl) {
         this.messageDao = messageDaoImpl;
     }
+
+    @Override
+    public void addContact(Contact contact) {
+        contactDao.addContact(contact);
+    }
+
+    @Override
+    public void addPlace(Place dnepr) {
+        placeDao.addPlace(dnepr);
+    }
+
+
 
     @Override
     public String toString() {

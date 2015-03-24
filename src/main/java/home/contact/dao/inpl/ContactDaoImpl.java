@@ -4,26 +4,25 @@ import home.contact.dao.ContactDao;
 import home.contact.model.Contact;
 import org.springframework.stereotype.Component;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Aleksandr on 07.03.2015.
  */
+
 @Component
 public class ContactDaoImpl implements ContactDao {
     private List<Contact> contactlist;
-//    private Map<Integer, Set<Contact>> listFriend = new HashMap<Integer, Set<Contact>>();
-    //TODO излишне тут
-    // private Set<Contact> contactFriendShipList;
-
-
+    private  int id = 0;
     @Override
     public void addContact(Contact contact) {
         if (contactlist == null) contactlist = new ArrayList<Contact>();
         contactlist.add(contact);
-        contact.setIdContact(contactlist.size() + 1);
+        ++id;
+        contact.setIdContact(id);
         System.out.println("===============" + contact.getIdContact() + "============");
-//        listFriend.put(contact.getIdContact(), new HashSet<Contact>());
     }
 
     @Override
@@ -33,8 +32,6 @@ public class ContactDaoImpl implements ContactDao {
 
     @Override
     public void addFriendShip(Contact contactOne, Contact contactTwo) {
-        //TODO Когда ты добавляешь дружбу для первогоконтакта - ты также должен добавить дружбу и второму
-        //А метод get щ\здесь можно заменить на contains, в таком случае тебе не нужно сравнивать еще и с null
         Set<Contact> l = contactOne.getFriends();
         l.add(contactTwo);
         l = contactTwo.getFriends();
@@ -43,8 +40,6 @@ public class ContactDaoImpl implements ContactDao {
 
     @Override
     public void removeFriendship(Contact contactOne, Contact contactTwo) {
-        //TODO Аналогично и тут, удалять дружбу нужно у обоих
-        //contactFriendShipList  = new HashSet<Contact>();
         Set<Contact> l = contactOne.getFriends();
         l.remove(contactTwo);
         l = contactTwo.getFriends();
@@ -65,6 +60,16 @@ public class ContactDaoImpl implements ContactDao {
 
     public List<Contact> getContactlist() {
         return contactlist;
+    }
+
+    @Override
+    public int getIdContact(Contact contact) {
+        return contact.getIdContact();
+    }
+
+    @Override
+    public Set<Contact> getFriends(Contact contact) {
+        return contact.getFriends();
     }
 
     public void setContactlist(List<Contact> contactlist) {

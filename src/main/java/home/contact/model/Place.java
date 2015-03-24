@@ -1,8 +1,11 @@
 package home.contact.model;
 
+import org.springframework.stereotype.Component;
+
 /**
  * Created by Aleksandr on 07.03.2015.
  */
+@Component
 public class Place {
     private String title;
     private double longitude;

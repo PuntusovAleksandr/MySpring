@@ -1,5 +1,7 @@
 package home.contact.model;
 
+import org.springframework.stereotype.Component;
+
 import javax.persistence.Column;
 import javax.persistence.Id;
 import java.time.LocalDate;
@@ -9,6 +11,7 @@ import java.util.Set;
 /**
  * Created by Aleksandr on 07.03.2015.
  */
+@Component
 public class Contact {
     @Column
     private String firstName;
